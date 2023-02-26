@@ -15,15 +15,12 @@ const images = [
 
 const galleryEl = document.querySelector('.gallery');
 
-galleryEl.insertAdjacentHTML(
-  'beforeend',
+const addNewImageMarkup = ({ url, alt }) =>
   `<li>
-    <img src="${images[0].url}" alt="${images[0].alt}" class="gallery__image">
-  </li>
-  <li>
-    <img src="${images[1].url}" alt="${images[1].alt}" class="gallery__image">
-  </li>
-    <li>
-    <img src="${images[2].url}" alt="${images[2].alt}" class="gallery__image">
-  </li>`,
-);
+    <img src="${url}" alt="${alt}" class="gallery__image">
+  </li>`;
+
+const imagesObjMarkup = images.map(addNewImageMarkup).join('');
+console.log(imagesObjMarkup);
+
+galleryEl.insertAdjacentHTML('beforeend', imagesObjMarkup);
